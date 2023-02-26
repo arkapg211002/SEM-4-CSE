@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    02:20:05 02/26/2023 
+-- Create Date:    10:40:49 02/22/2023 
 -- Design Name: 
--- Module Name:    OR_RTL - Behavioral 
+-- Module Name:    AndRTL - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,16 +29,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity OR_RTL is
+entity AndRTL is
     Port ( A : in  STD_LOGIC;
            B : in  STD_LOGIC;
            Y : out  STD_LOGIC);
-end OR_RTL;
+end AndRTL;
 
-architecture Behavioral of OR_RTL is
+architecture Behavioral of AndRTL is
 
 begin
-Y<=A or B;
+Y<=A and B;
 
 end Behavioral;
 

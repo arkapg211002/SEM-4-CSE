@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    15:03:55 02/20/2023 
+-- Create Date:    02:26:54 02/26/2023 
 -- Design Name: 
 -- Module Name:    NAND_RTL - Behavioral 
 -- Project Name: 
@@ -37,12 +37,8 @@ end NAND_RTL;
 
 architecture Behavioral of NAND_RTL is
 
-signal temp:STD_LOGIC:= '0';
-
 begin
-
-temp<=A and B;
-Y<= not temp;
+Y<=(not A) or (not B);
 
 end Behavioral;
 
