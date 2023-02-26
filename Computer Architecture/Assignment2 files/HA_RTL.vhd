@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    15:20:18 02/20/2023 
+-- Create Date:    02:32:01 02/26/2023 
 -- Design Name: 
 -- Module Name:    HA_RTL - Behavioral 
 -- Project Name: 
@@ -32,22 +32,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity HA_RTL is
     Port ( A : in  STD_LOGIC;
            B : in  STD_LOGIC;
-           Sum : out  STD_LOGIC;
-           Carry : out  STD_LOGIC);
+           S : out  STD_LOGIC;
+           C : out  STD_LOGIC);
 end HA_RTL;
 
 architecture Behavioral of HA_RTL is
-signal sa:STD_LOGIC:= '0';
-signal sb:STD_LOGIC:= '0';
-signal saa:STD_LOGIC:= '0';
-signal sbb:STD_LOGIC:= '0';
+
 begin
-sa<= not A;
-sb<= not B;
-saa<= sa and B;
-sbb<= sb and A;
-Sum<= saa and sbb;
-Carry<= A and B;
+s<= A xor B;
+c<= A and B;
 
 end Behavioral;
 

@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    15:32:28 02/20/2023 
+-- Create Date:    02:36:31 02/26/2023 
 -- Design Name: 
 -- Module Name:    FA_RTL - Behavioral 
 -- Project Name: 
@@ -40,8 +40,7 @@ end FA_RTL;
 architecture Behavioral of FA_RTL is
 
 begin
-
-Sum<= A xor B xor Cin;
+Sum<= ((not A) and (not B) and Cin) or ((not A) and (not Cin) and B) or ((not B) and (not Cin) and A) or (A and B and Cin);
 Cout<= (A and B) or (A and Cin) or (B and Cin);
 
 end Behavioral;

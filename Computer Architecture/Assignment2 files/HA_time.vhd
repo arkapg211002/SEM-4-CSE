@@ -1,0 +1,95 @@
+--------------------------------------------------------------------------------
+-- Company: 
+-- Engineer:
+--
+-- Create Date:   02:34:05 02/26/2023
+-- Design Name:   
+-- Module Name:   /home/ise/xilinx/HalfAdder/HA/HA_time.vhd
+-- Project Name:  HA
+-- Target Device:  
+-- Tool versions:  
+-- Description:   
+-- 
+-- VHDL Test Bench Created by ISE for module: HA_RTL
+-- 
+-- Dependencies:
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+--
+-- Notes: 
+-- This testbench has been automatically generated using types std_logic and
+-- std_logic_vector for the ports of the unit under test.  Xilinx recommends
+-- that these types always be used for the top-level I/O of a design in order
+-- to guarantee that the testbench will bind correctly to the post-implementation 
+-- simulation model.
+--------------------------------------------------------------------------------
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
+ 
+ENTITY HA_time IS
+END HA_time;
+ 
+ARCHITECTURE behavior OF HA_time IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT HA_RTL
+    PORT(
+         A : IN  std_logic;
+         B : IN  std_logic;
+         S : OUT  std_logic;
+         C : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal A : std_logic := '0';
+   signal B : std_logic := '0';
+
+ 	--Outputs
+   signal S : std_logic;
+   signal C : std_logic;
+   -- No clocks detected in port list. Replace <clock> below with 
+   -- appropriate port name 
+ 
+   
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: HA_RTL PORT MAP (
+          A => A,
+          B => B,
+          S => S,
+          C => C
+        );
+
+   -- Clock process definitions
+   
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+       A<='0';
+	  B<='0';
+	  wait for 1 ps;
+	  A<='0';
+	  B<='1';
+	  wait for 1 ps;
+	  A<='1';
+	  B<='0';
+	  wait for 1 ps;
+	  A<='1';
+	  B<='1';
+	  wait for 1 ps;
+   end process;
+
+END;
