@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    11:44:34 03/19/2023 
+-- Create Date:    19:42:06 03/27/2023 
 -- Design Name: 
 -- Module Name:    srff - Behavioral 
 -- Project Name: 
@@ -30,30 +30,37 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity srff is
-    Port ( s : in  STD_LOGIC;
+    Port ( clk : in  STD_LOGIC;
+           s : in  STD_LOGIC;
            r : in  STD_LOGIC;
-           rst : in  STD_LOGIC;
-           clk : in  STD_LOGIC;
            q : out  STD_LOGIC;
-           qb : out  STD_LOGIC);
+           qb : out  STD_LOGIC;
+           rst : in  STD_LOGIC);
 end srff;
 
 architecture Behavioral of srff is
 
+signal t,tb: std_logic:='0';
+
 begin
-process(s,r,rst,clk)
+q<=t;
+qb<=tb;
+process(clk,s,r,rst)
 begin
-if(rst='1') then
-q<='0';
+if(rst='1')then
+t<='0';
+tb<='1';
 elsif(rising_edge(clk))then
-if(s /= r) then
-q<=s;
-qb<=r;
+if(s/=r)then
+t<=s;
+tb<=r;
 elsif(s='1' and r='1')then
-q<='Z'; -- use capital letter better use Z
-qb<='Z';-- use capital letter better use Z
+t<='Z';
+tb<='Z';
 end if;
 end if;
 end process;
+
+
 end Behavioral;
 

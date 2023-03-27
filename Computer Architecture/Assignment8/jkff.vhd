@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    12:32:23 03/19/2023 
+-- Create Date:    19:55:01 03/27/2023 
 -- Design Name: 
 -- Module Name:    jkff - Behavioral 
 -- Project Name: 
@@ -40,21 +40,26 @@ end jkff;
 
 architecture Behavioral of jkff is
 
+signal t,tb:std_logic:='0';
+
 begin
+
+q<=t;
+qb<=tb;
 process(clk,j,k,rst)
-variable t: std_logic;
 begin
 if(rst='1')then
-t:='0';
+t<='0';
+tb<='1';
 elsif(rising_edge(clk))then
 if(j/=k)then
-t:=j;
+t<=j;
+tb<=k;
 elsif(j='1' and k='1')then
-t:= not q;
+t<= not t;
+tb<= not tb;
 end if;
 end if;
-q<=t;
-qb<=not t;
 end process;
 
 end Behavioral;
