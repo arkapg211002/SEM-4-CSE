@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   09:14:27 03/11/2023
+-- Create Date:   14:19:41 03/13/2023
 -- Design Name:   
--- Module Name:   /home/ise/xilinx/comparator/comparator4bit/tb_comparator.vhd
+-- Module Name:   /home/student/Desktop/13000121058/AddderSubtractor/comparator/comparator4bit/tb_comparator.vhd
 -- Project Name:  comparator4bit
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: comparator
+-- VHDL Test Bench Created by ISE for module: comp4bit
 -- 
 -- Dependencies:
 -- 
@@ -39,10 +39,10 @@ ARCHITECTURE behavior OF tb_comparator IS
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT comparator
+    COMPONENT comp4bit
     PORT(
-         x1 : IN  std_logic_vector(3 downto 0);
-         x2 : IN  std_logic_vector(3 downto 0);
+         a : IN  std_logic_vector(3 downto 0);
+         b : IN  std_logic_vector(3 downto 0);
          g : OUT  std_logic;
          e : OUT  std_logic;
          l : OUT  std_logic
@@ -51,8 +51,8 @@ ARCHITECTURE behavior OF tb_comparator IS
     
 
    --Inputs
-   signal x1 : std_logic_vector(3 downto 0) := (others => '0');
-   signal x2 : std_logic_vector(3 downto 0) := (others => '0');
+   signal a : std_logic_vector(3 downto 0) := (others => '0');
+   signal b : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
    signal g : std_logic;
@@ -66,9 +66,9 @@ ARCHITECTURE behavior OF tb_comparator IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: comparator PORT MAP (
-          x1 => x1,
-          x2 => x2,
+   uut: comp4bit PORT MAP (
+          a => a,
+          b => b,
           g => g,
           e => e,
           l => l
@@ -76,20 +76,20 @@ BEGIN
 
    -- Clock process definitions
    
+ 
 
    -- Stimulus process
    stim_proc: process
    begin		
-      x1<="1001";
-		x2<="1000";
+      a<="1100";
+		b<="1001";
 		wait for 1 ps;
-		x1<="1000";
-		x2<="1001";
+		a<="1000";
+		b<="1001";
 		wait for 1 ps;
-		x1<="1001";
-		x2<="1001";
+		a<="1001";
+		b<="1001";
 		wait for 1 ps;
-		
    end process;
 
 END;
